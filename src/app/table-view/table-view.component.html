@@ -1,0 +1,35 @@
+<div class="container">
+    <!-- ----{{parentData}} -->
+    <button type="button" value="filter" class="btn btn-success" (click)="divideBytwo()">divide by 2</button>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">User Id</th>
+                <th scope="col">Id</th>
+                <th scope="col">Title</th>
+                <th scope="col">Completed Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngIf="!divideButton">
+                <tr *ngFor="let userInfo of usersData">
+                    <td>{{userInfo.userId}}</td>
+                    <td>{{userInfo.id}}</td>
+                    <td>{{userInfo.title}}</td>
+                    <td>{{userInfo.completed}}</td>
+                </tr>
+            </ng-container>
+            <ng-container *ngIf="divideButton">
+                <ng-container *ngFor="let userInfo of usersData">
+                    <tr *ngIf="userInfo.id % 2 === 0">
+                        <td>{{userInfo.userId}}</td>
+                        <td>{{userInfo.id}}</td>
+                        <td>{{userInfo.title}}</td>
+                        <td>{{userInfo.completed}}</td>
+                    </tr>
+                </ng-container>
+            </ng-container>
+        </tbody>
+    </table>
+
+</div>

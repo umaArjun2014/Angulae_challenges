@@ -1,0 +1,15 @@
+<div class="container" *ngIf="!displayTable">
+    <h2>Login Form </h2>
+    <form [formGroup] = "loginForm">
+        <div class="form-group">
+            <label>username</label>
+            <input [type]="userName.typeValue" class="col-sm-2" [name]="userName.name" required [placeholder] = "userName.placeholderValue"  class="form-control">
+        </div>
+        <div class="form-group">
+            <label>password</label>
+            <input [type]="password.typeValue" class="col-sm-2" [name]="password.name" required [placeholder] = "password.placeholderValue" class="form-control">
+        </div>
+        <button class="btn btn-primary" [type]="button.type"  (click)="switchToTable()">{{button.value}}</button>
+    </form>
+   
+</div>

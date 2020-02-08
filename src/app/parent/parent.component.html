@@ -1,0 +1,20 @@
+<p>parent works!</p>
+<app-header [headerNav]= "headerTitle" class="text-align" (clickedHead)="retrieveClickedCompo($event)"></app-header>
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3">Home Page Works</h1>
+          <b class="danger-txt">{{clickedCompo}}</b>
+          <p><a class="btn btn-primary btn-lg" href="#" role="button" (click) ="changeTitles()">Learn more &raquo;</a></p>
+        </div>
+      </div>
+  
+      <div class="container">
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <input type="checkbox" name="options" [(ngModel)] = "isChecked" (change)="toggleVisibility($event)"> Toggle
+          </div>
+          <app-child-to-parent></app-child-to-parent >
+          
+          <hr>
+      </div> 
+    <app-footer [footerNav]= "footerTitle" class="text-align" (clicked)="retrieveClickedCompo($event)"></app-footer>
