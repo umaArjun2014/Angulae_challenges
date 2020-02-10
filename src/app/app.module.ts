@@ -11,6 +11,7 @@ import { ParentComponent } from './parent/parent.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ChildToParentComponent } from './child-to-parent/child-to-parent.component';
+import { TemplateOutletConceptComponent } from './template-outlet-concept/template-outlet-concept.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ChildToParentComponent } from './child-to-parent/child-to-parent.compon
     ParentComponent,
     HeaderComponent,
     FooterComponent,
-    ChildToParentComponent
+    ChildToParentComponent,
+    TemplateOutletConceptComponent
   ],
   imports: [
     BrowserModule,
