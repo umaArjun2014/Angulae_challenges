@@ -1,0 +1,63 @@
+<div class="card m-3">
+    <h5 class="card-header">Angular 8 Reactive Form & Validation</h5>
+    <div class="card-body">
+        <form [formGroup]= "personalDetails" (ngSubmit)="personalData()">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+            <label for="name">Full Name</label>
+            <input type="text" formControlName="firstName" class="form-control" id="firstName" placeholder="Full Name" />
+            <span class="form-text text-danger"  *ngIf="f.firstName.touched && f.firstName.errors?.required">
+                firstName is required.</span>
+        </div>
+            <div class="form-group col-md-6">
+            <label for="Age">Age</label>
+            <input type="number" class="form-control" formControlName="age" id="number" placeholder="Age ">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputAddress">Address</label>
+            <input type="text" class="form-control" id="inputAddress" formControlName="address1" placeholder="1234 Main St">
+        </div>
+        <div class="form-group">
+            <label for="inputAddress2">Address 2</label>
+            <input type="text" class="form-control" id="inputAddress2" formControlName="address2" placeholder="Apartment, studio, or floor">
+        </div>
+        
+        <div class="form-group">
+            <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck">
+            <label class="form-check-label" for="gridCheck">
+                Check me out
+            </label>
+            </div>
+        </div>
+        <div class="custom-control custom-radio mb-3">
+            <input type="radio" class="custom-control-input" id="Male" value="male" formControlName="gender" name="gender" required>
+            <label class="custom-control-label" for="Male">Male</label>
+            <div class="invalid-feedback">More example invalid feedback text</div>
+          </div>
+          <div class="custom-control custom-radio mb-3">
+            <input type="radio" class="custom-control-input" id="Female" value="female" name="gender" formControlName="gender" required>
+            <label class="custom-control-label" for="Female">Female</label>
+            <div class="invalid-feedback">More example invalid feedback text</div>
+          </div>
+          <button type="button" class="btn btn-warning" (click)="addSkillset()">Add Skills</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!personalDetails.valid">Sign in</button>
+
+        <div *ngFor="let skil of setOfSkills.controls; let i = index" class="form-group col-md-6">
+            <div [formGroup]="skil" class="form-row">
+                <div class="form-group col-6">
+                    <label>skil</label>
+                    <div>
+                    <input type="text" formControlName="skills" class="form-control" [ngClass]="{ 'is-invalid': submitted && skil.controls.name.errors }" />
+                    <button class="btn btn-danger" (click) = "removeSkill(i)">Remove</button>
+                </div>
+                    <div *ngIf="submitted && skil.controls.name.errors" class="invalid-feedback">
+                        <div *ngIf="skil.controls.name.errors.required">Name is required</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>

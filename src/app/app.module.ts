@@ -13,6 +13,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ChildToParentComponent } from './child-to-parent/child-to-parent.component';
 import { TemplateOutletConceptComponent } from './template-outlet-concept/template-outlet-concept.component';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { PersonalDetailsReactiveComponent } from './personal-details-reactive/personal-details-reactive.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { LoginFormComponent } from './login-form/login-form.component';
     FooterComponent,
     ChildToParentComponent,
     TemplateOutletConceptComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    PersonalDetailsReactiveComponent
   ],
   imports: [
     BrowserModule,
