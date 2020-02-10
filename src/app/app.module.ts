@@ -12,6 +12,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ChildToParentComponent } from './child-to-parent/child-to-parent.component';
 import { TemplateOutletConceptComponent } from './template-outlet-concept/template-outlet-concept.component';
+import { LoginFormComponent } from './login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { TemplateOutletConceptComponent } from './template-outlet-concept/templa
     HeaderComponent,
     FooterComponent,
     ChildToParentComponent,
-    TemplateOutletConceptComponent
+    TemplateOutletConceptComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,31 @@
+<form #userForm="ngForm" (ngSubmit)="userForm.form.valid && submitForm()">
+    <div class="form-group mb-2">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" #email="ngModel" required pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$" name ="email" [(ngModel)] ="loginForm.email" class="form-control" [class.is-invalid] = "email.invalid && email.touched">
+      <div *ngIf="email.dirty && email.invalid">
+        <small class="form-text text-danger" *ngIf="email.errors.required">
+                            Your email is required.
+        </small>
+        <small class="form-text text-danger" *ngIf="email.value.length>0 && email.dirty && email.invalid">
+                            Please enter a valid email address
+        </small>
+    </div>
+    </div>
+    <div class="form-group mb-2">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control"#psw="ngModel" name="psw" [(ngModel)] = "loginForm.password" minlength="3" maxlength="9" required [class.is-invalid] = "psw.invalid && psw.touched" placeholder="Password">
+      <div *ngIf="psw.dirty && psw.invalid">
+        <small class="form-text text-danger" *ngIf="psw.errors.required">
+                            Your userName is required.
+        </small>
+        <small class="form-text text-danger" *ngIf="psw.errors.minlength">
+                            Your password to be at least 3 characters.
+        </small>
+      </div>
+    </div>
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!userForm.valid">Submit</button>
+  </form>
