@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class RegistrationComponent implements OnInit {
   public localUsers = [];
+  private isEmailSame = false;
   public password = new FormControl('', Validators.required);
   public cpassword = new FormControl('', CustomValidators.equalTo(this.password));
 
@@ -25,27 +26,35 @@ export class RegistrationComponent implements OnInit {
   constructor(private fb: FormBuilder, private router: Router) { }
 
   ngOnInit() {
+    this.localUsers = JSON.parse(localStorage.getItem('regUsers'));
   }
   registerForm() {
     if (localStorage.regUsers === undefined) {
-      this.localUsers.push(this.regForm.value);
-      localStorage.setItem('regUsers', JSON.stringify(this.localUsers));
+      const users: any = [];
+      users.push(this.regForm.value);
+      localStorage.setItem('regUsers', JSON.stringify(users));
       this.router.navigate(['/Login']);
       alert('Registered successfully');
     } else {
-      let users: any = [];
-      users = JSON.parse(localStorage.getItem('regUsers'));
-      for (const product of users) {
-        if (product.email !== this.regForm.value.email) {
+        if (this.isUserExist(this.localUsers, this.regForm.value)) {
+            alert ('User aleredy exist');
+        } else {
           this.localUsers.push(this.regForm.value);
           localStorage.setItem('regUsers', JSON.stringify(this.localUsers));
           alert('Registered successfully');
           this.router.navigate(['/Login']);
-        } else {
-          alert('user already exist');
         }
-      }
     }
   }
-
+  isUserExist(setOfUsers , currentUsers) {
+    for (const product of setOfUsers) {
+      if (currentUsers.email !== product.email) {
+        this.isEmailSame = false;
+      } else {
+        this.isEmailSame = true;
+        return this.isEmailSame;
+      }
+    }
+    return this.isEmailSame;
+  }
 }
