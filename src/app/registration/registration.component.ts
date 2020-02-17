@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { CustomValidators } from 'ngx-custom-validators';
 import { Router } from '@angular/router';
+import { UserDetailsService } from '../user-details.service';
 
 @Component({
   selector: 'app-registration',
@@ -21,12 +22,13 @@ export class RegistrationComponent implements OnInit {
     password: this.password,
     cpassword: this.cpassword,
     gender: ['', Validators.required],
-    agreeTerms: ['', Validators.required]
+    agreeTerms: ['', Validators.required],
+    id: Date.now()
   });
-  constructor(private fb: FormBuilder, private router: Router) { }
+  constructor(private fb: FormBuilder, private router: Router, private usereService: UserDetailsService) { }
 
   ngOnInit() {
-    this.localUsers = JSON.parse(localStorage.getItem('regUsers'));
+    this.localUsers = this.usereService.getUsersFromLocal();
   }
   registerForm() {
     if (localStorage.regUsers === undefined) {

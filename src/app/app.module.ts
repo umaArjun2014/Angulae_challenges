@@ -11,6 +11,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
+import { UserInfoComponent } from './user-info/user-info.component';
+import { HostPropDirective } from './host-prop.directive';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { MaterialModule } from './material.module';
     ForgotPswComponent,
     RegistrationComponent,
     DashboardComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    UserInfoComponent,
+    HostPropDirective
   ],
   imports: [
     BrowserModule,
