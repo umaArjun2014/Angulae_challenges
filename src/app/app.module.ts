@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http';
+import { MatPaginatorModule } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +15,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { UserInfoComponent } from './user-info/user-info.component';
 import { HostPropDirective } from './host-prop.directive';
+import { ProfileComponent } from './profile/profile.component';
+import { TopbarComponent } from './topbar/topbar.component';
+import { HttpReqComponent } from './http-req/http-req.component';
+import {MockHttpCalIInterceptor } from '../app/http.interceptor';
 
 @NgModule({
   declarations: [
@@ -23,7 +29,10 @@ import { HostPropDirective } from './host-prop.directive';
     DashboardComponent,
     PageNotFoundComponent,
     UserInfoComponent,
-    HostPropDirective
+    HostPropDirective,
+    ProfileComponent,
+    TopbarComponent,
+    HttpReqComponent
   ],
   imports: [
     BrowserModule,
@@ -31,9 +40,18 @@ import { HostPropDirective } from './host-prop.directive';
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    MatPaginatorModule
+
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MockHttpCalIInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

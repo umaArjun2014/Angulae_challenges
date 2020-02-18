@@ -7,17 +7,21 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { RegistrationComponent } from './registration/registration.component';
 import { UserInfoComponent } from './user-info/user-info.component';
 import { AuthGuard } from './auth.guard';
+import { ProfileComponent } from './profile/profile.component';
+import { HttpReqComponent } from './http-req/http-req.component';
 
 
 const routes: Routes = [
 {path: '', component: LoginComponent },
 {path: 'dashboard', component: DashboardComponent },
-{path: 'ForgotPsw', component: ForgotPswComponent },
-{path: 'Login', component: LoginComponent },
-{path: 'PageNotFound', component: PageNotFoundComponent},
-{path: 'Registration', component: RegistrationComponent},
-{path: 'UserInfo', component: UserInfoComponent , canActivate: [AuthGuard] },
-{path: 'UserInfo/:id', component: UserInfoComponent , canActivate: [AuthGuard] },
+{path: 'forgotPsw', component: ForgotPswComponent },
+{path: 'login', component: LoginComponent },
+{path: 'pageNotFound', component: PageNotFoundComponent},
+{path: 'registration', component: RegistrationComponent},
+{path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
+{path: 'getUserData', component: HttpReqComponent, canActivate: [AuthGuard]},
+{path: 'userInfo', component: UserInfoComponent , canActivate: [AuthGuard] },
+{path: 'userInfo/:id', component: UserInfoComponent , canActivate: [AuthGuard] },
 {path: '**', component: PageNotFoundComponent }];
 
 @NgModule({

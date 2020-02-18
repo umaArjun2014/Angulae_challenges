@@ -25,7 +25,7 @@ get f() { return this.userForm.controls; }
       const regUsersList = JSON.parse(localStorage.getItem('regUsers'));
       if (this.isUserExist(regUsersList, this.userForm)) {
           alert ('Logged Successfully');
-          this.auth.sendToken(JSON.stringify(this.userForm.value));
+          this.auth.sendToken(JSON.stringify(this.isUserExist(regUsersList, this.userForm)));
           this.router.navigate(['/dashboard']);
       } else {
         alert ('Please register before login !!!');
@@ -38,7 +38,7 @@ get f() { return this.userForm.controls; }
         this.isUserMatch = false;
       } else {
         this.isUserMatch = true;
-        return this.isUserMatch;
+        return user;
       }
     }
     return this.isUserMatch;

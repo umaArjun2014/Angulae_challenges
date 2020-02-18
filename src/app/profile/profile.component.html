@@ -1,0 +1,63 @@
+<app-topbar></app-topbar>
+<h4 class="pAlign">{{loggedUserProfile.email}} Information</h4>
+<div class="pAlign">
+    <div>
+        <mat-grid-list  cols="6" class="mat-form-field--inline">
+            <mat-form-field appearance="fill">
+            <mat-label>Full Name :</mat-label>
+            <input matInput [(ngModel)] = loggedUserProfile.fullname>
+            </mat-form-field>
+            <button mat-raised-button color="primary" class="btnPosition" (click)= modelChanged(loggedUserProfile)>
+                Save me :)
+            </button>
+        </mat-grid-list>
+    </div>
+    <div>
+        <mat-grid-list  cols="6" class="mat-form-field--inline">
+            <mat-form-field appearance="fill">
+            <mat-label>Email :</mat-label>
+            <input matInput [ngModel] = loggedUserProfile.email>
+            </mat-form-field>
+        </mat-grid-list>
+    </div>
+    <div>
+        <mat-grid-list  cols="6" class="mat-form-field--inline">
+            <mat-form-field appearance="fill">
+            <mat-label>Phone :</mat-label>
+            <input matInput [ngModel] = loggedUserProfile.phone>
+            </mat-form-field>
+            </mat-grid-list>
+    </div>
+    <div>
+        <mat-grid-list  cols="6" class="mat-form-field--inline">
+            <mat-form-field appearance="fill">
+            <mat-label>Password :</mat-label>
+            <input matInput [ngModel] = loggedUserProfile.password>
+            </mat-form-field>
+            </mat-grid-list>
+    </div>
+    <div>
+        <mat-grid-list  cols="6" class="mat-form-field--inline">
+            <mat-form-field appearance="fill">
+            <mat-label>Confirm password :</mat-label>
+            <input matInput [ngModel] = loggedUserProfile.cpassword>
+            </mat-form-field>
+            </mat-grid-list>
+    </div>
+    <div>
+        <mat-grid-list  cols="6" class="mat-form-field--inline">
+            <mat-form-field appearance="fill">
+            <mat-label>Gender :</mat-label>
+            <input matInput [ngModel] = loggedUserProfile.gender>
+            </mat-form-field>
+            </mat-grid-list>
+    </div>
+    <div>
+        <mat-grid-list  cols="6" class="mat-form-field--inline">
+            <mat-form-field appearance="fill">
+            <mat-label>Agree Terms :</mat-label>
+            <input matInput [ngModel] = loggedUserProfile.agreeTerms>
+            </mat-form-field>
+            </mat-grid-list>
+    </div>
+</div>

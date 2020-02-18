@@ -35,7 +35,7 @@ export class RegistrationComponent implements OnInit {
       const users: any = [];
       users.push(this.regForm.value);
       localStorage.setItem('regUsers', JSON.stringify(users));
-      this.router.navigate(['/Login']);
+      this.router.navigate(['/login']);
       alert('Registered successfully');
     } else {
         if (this.isUserExist(this.localUsers, this.regForm.value)) {
@@ -44,7 +44,7 @@ export class RegistrationComponent implements OnInit {
           this.localUsers.push(this.regForm.value);
           localStorage.setItem('regUsers', JSON.stringify(this.localUsers));
           alert('Registered successfully');
-          this.router.navigate(['/Login']);
+          this.router.navigate(['/login']);
         }
     }
   }

@@ -1,6 +1,9 @@
-import { Component, OnInit, HostListener, HostBinding} from '@angular/core';
+import { Component, OnInit, HostListener, HostBinding, ViewChild} from '@angular/core';
 import { UserDetailsService } from '../user-details.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { HttpServiceService } from '../http-service.service';
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -10,26 +13,34 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class DashboardComponent implements OnInit {
   public usersList = [];
   userExist;
-  private timoutWarning = 30000;
-  private timoutNow = 60000;
+  private timoutWarning = 300000;
+  private timoutNow = 600000;
   private warningTimer;
+  public isToggleChecked = true;
+  public listOfUsers = [];
+  public labelForTable;
   displayedColumns: string[] = ['email', 'fullname', 'phone', 'gender'];
+  usersColumns: string[] = ['userId', 'id', 'title', 'completed'];
+  dataSource = new MatTableDataSource([]);
+
   @HostBinding('class.hostBinding') public isUserActive: boolean;
-  constructor(private userService: UserDetailsService, private router: Router) {
+  constructor(private userService: UserDetailsService, private router: Router, private httpService: HttpServiceService) {
     this.StartTimers();
   }
 
+  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   ngOnInit() {
     this.isUserActive = false;
+    this.labelForTable = 'List Of Admins';
     this.usersList = this.userService.getUsersFromLocal();
   }
   getUserInfo(userData) {
     this.userService.getUserInfo(userData);
-    this.router.navigate(['/UserInfo', {id: userData.id}]);
+    this.router.navigate(['/userInfo', {id: userData.id}]);
   }
   private idleWarning = () => {
     alert('your ideal since longer,appln is going to logout');
-    this.router.navigate(['/Login']);
+    this.router.navigate(['/login']);
   }
 
    ResetTimers() {
@@ -47,4 +58,15 @@ StartTimers() {
       this.ResetTimers();
 }
 
+fetchUsers() {
+  if (!this.isToggleChecked) {
+    this.labelForTable = 'List Of Admins';
+  } else {
+    this.httpService.sendGetReponce().subscribe((data: any[]) => {
+      this.listOfUsers = data;
+      this.dataSource.data = this.listOfUsers;
+      this.labelForTable = 'List Of Users';
+    });
+  }
+}
 }
