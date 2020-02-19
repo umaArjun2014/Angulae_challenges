@@ -10,17 +10,17 @@ import { ActivatedRoute } from '@angular/router';
 export class UserInfoComponent implements OnInit {
   retrievedUser = {};
   constructor(private userService: UserDetailsService, private route: ActivatedRoute) {
-    this.retrievedUser = this.userService.sendUserInfo();
+    this.retrievedUser = this.userService.sendUserInfo();  // Show logged user info
 
   }
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
-    for (const user of this.userService.getUsersFromLocal()) {
-      if (user.id) {
-        this.retrievedUser = user;
-      }
-    }
+    // const id = this.route.snapshot.paramMap.get('id');
+    // for (const user of this.userService.getUsersFromLocal()) {
+    //   if (user.id) {
+    //     this.retrievedUser = user;
+    //   }
+    // }
   }
 
 }

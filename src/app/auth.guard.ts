@@ -8,7 +8,6 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  idToDisplay;
   constructor(private route: Router, private auth: AuthService) { }
   canActivate(
     next: ActivatedRouteSnapshot,

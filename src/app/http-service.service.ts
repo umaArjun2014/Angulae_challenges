@@ -8,6 +8,7 @@ export class HttpServiceService {
   private REST_API_SERVER = 'https://jsonplaceholder.typicode.com/todos';
   constructor(private http: HttpClient) { }
 
+  // send the list of users from API call
   sendGetReponce() {
     return this.http.get(this.REST_API_SERVER);
   }

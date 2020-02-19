@@ -1,7 +1,8 @@
+<!-- <app-http-req></app-http-req> -->
 <mat-card class="card-position">
     <mat-card-title class="title-position">Login</mat-card-title>
 <mat-card-content>
-<form class="form-position" [formGroup]= "userForm" (submit)="submit()">
+<form class="form-position" [formGroup]= "userForm" (ngSubmit)="submit()">
   <p>
     <mat-form-field>
       <input type="text" matInput placeholder="Username" formControlName="username">

@@ -1,7 +1,7 @@
 <mat-card class="card-position">
     <mat-card-title class="title-position">Registraion Form</mat-card-title>
 <mat-card-content>
-<form class="form-position" [formGroup]= "regForm" (submit) = "registerForm()">
+<form class="form-position" [formGroup]= "regForm" (ngSubmit) = "registerForm()">
   <p>
     <mat-form-field>
       <input type="text" matInput placeholder="Fullme" formControlName="fullname">
@@ -27,8 +27,6 @@
       <input type="password" matInput required placeholder="confirm password" formControlName="cpassword">
     </mat-form-field>
   </p>
-  <!-- <p *ngIf="regForm.controls.cpassword.touched && regForm.controls.cpassword.errors?.equalTo" class="form-text text-danger">password should match with confirm password</p> -->
-
   <p>
     <mat-radio-group aria-label="Select an option" formControlName="gender">
         <mat-radio-button value="1" value="male">Male</mat-radio-button>

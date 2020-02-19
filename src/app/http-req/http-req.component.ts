@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpServiceService } from '../http-service.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-http-req',
@@ -8,9 +9,13 @@ import { HttpServiceService } from '../http-service.service';
 })
 export class HttpReqComponent implements OnInit {
   public fetchData;
-  constructor(private httpSer: HttpServiceService) { }
+  usersData = [];
+  constructor(private httpSer: HttpServiceService, private http: HttpClient) { }
 
   ngOnInit() {
-  }
+    this.fetchData = this.httpSer.sendGetReponce().subscribe((data: any[]) => {
+    this.fetchData = data;
+  });
+}
 
 }

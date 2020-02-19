@@ -10,14 +10,16 @@ import { Router} from '@angular/router';
 export class TopbarComponent implements OnInit {
   loggedUser;
   constructor(private profile: UserProfileServiceService, private route: Router) {
-    // this.loggedUser = JSON.parse(localStorage.getItem('LoggedUser')).fullname;
   }
 
+  // To show the username on topbar, by retrieving logged user
   ngOnInit() {
     this.profile.currentUser.subscribe((loggedUser) => {this.loggedUser = loggedUser; });
-    console.log(this.loggedUser);
   }
+
+  // User will navigate lo login page once he logout the application
   logout() {
+    localStorage.removeItem('LoggedUser');
     this.route.navigate(['/login']);
   }
 }

@@ -3,6 +3,9 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} fro
 import { Observable } from 'rxjs';
 @Injectable()
 
+// Send multiple headers and params, using interceptors
+// As we cannot modify the request, so cloned a copy of request to update it
+
 export class MockHttpCalIInterceptor implements HttpInterceptor {
     constructor(private injector: Injector) { }
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
