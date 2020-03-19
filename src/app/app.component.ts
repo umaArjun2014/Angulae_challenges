@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LocalStorageEnums } from './localEnums';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'routing';
+  // isUserLogged = localStorage.setItem(LocalStorageEnums.LOGGEDUSER, {});
 }

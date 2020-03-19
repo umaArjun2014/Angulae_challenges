@@ -1,46 +1,37 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http';
+import { MaterialModule } from './modules/material/material.module';
+import { LoginModuleModule } from './modules/login-module/login-module.module';
+import { PNFModule } from './modules/pnf/pnf.module';
+import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { ForgotPswComponent } from './forgot-psw/forgot-psw.component';
-import { RegistrationComponent } from './registration/registration.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './material.module';
-import { UserInfoComponent } from './user-info/user-info.component';
-import { ProfileComponent } from './profile/profile.component';
-import { TopbarComponent } from './topbar/topbar.component';
-import { HttpReqComponent } from './http-req/http-req.component';
+import { ApiCallsModule } from './modules/api-calls/api-calls.module';
 import {MockHttpCalIInterceptor } from '../app/http.interceptor';
+import { TopbarComponent } from './components/topbar/topbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    ForgotPswComponent,
-    RegistrationComponent,
-    DashboardComponent,
-    PageNotFoundComponent,
-    UserInfoComponent,
-    ProfileComponent,
-    TopbarComponent,
-    HttpReqComponent
+    TopbarComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
+    PNFModule,
+    LoginModuleModule,
+    AppRoutingModule,
     MaterialModule,
+    MatTableModule,
     FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    ApiCallsModule
+
 
   ],
   providers: [
